@@ -2508,7 +2508,7 @@ void Demo::prepare()
 		// Load all the PNG files
 		catTex = new Texture("../../../Assets/CatColor.png", this);
 		dogTex = new Texture("../../../Assets/DogColor.png", this);
-		rockTex = new Texture("../../../Assets/rockColor.png", this);
+		rockTex = new Texture("../../../Assets/BrickColor.png", this);
 		skyTex = new Texture("../../../Assets/skybox.png", this);
 
 		// In this example, each entity has its own seperate

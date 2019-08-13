@@ -44,17 +44,17 @@ VkPipelineVertexInputStateCreateInfo VertexStructure::GetState()
 	// because there are 12 bits in position (3 floats that are 4 bytes large)
 	vertexInputAttributs[1].offset = offsetof(VertexStructure, uv);
 
-	// format is R32-B32, because there are two floats in every UV.
+	// format is R32-G32, because there are two floats in every UV.
 	vertexInputAttributs[1].format = VK_FORMAT_R32G32_SFLOAT;
 
-	// location = 2, because this is the second element of the vertex
+	// location = 2, because this is third element of the vertex
 	vertexInputAttributs[2].location = 2;
 
-	// offsetof returns 20, because uv starts 20 bytes after the start of the vertex,
+	// offsetof returns 20, because normal starts 20 bytes after the start of the vertex,
 	// because there are 20 bits in position and UV combined
 	vertexInputAttributs[2].offset = offsetof(VertexStructure, normal);
 
-	// format is R32-B32, because there are two floats in every UV.
+	// format is R32-G32-B32, because there are three floats in every normal.
 	vertexInputAttributs[2].format = VK_FORMAT_R32G32B32_SFLOAT;
 
 	// Vertex Input State
@@ -62,9 +62,8 @@ VkPipelineVertexInputStateCreateInfo VertexStructure::GetState()
 	// We give it the requires sType, we give it the number of 
 	// binding descriptions, which is one, and we give it the 
 	// pointer to the bindingInput, because it is not an array.
-	// We tell it how many attributes there are (two) (pos and uv),
-	// then we give it the array of two attributes (which is already
-	// a pointer)
+	// We tell it how many attributes there are (three) (pos, uv, and normal),
+	// then we give it the array of two attributes (which is already a pointer)
 	vi.sType = VK_STRUCTURE_TYPE_PIPELINE_VERTEX_INPUT_STATE_CREATE_INFO;
 	vi.vertexBindingDescriptionCount = 1;
 	vi.pVertexBindingDescriptions = &vertexInputBinding;
